@@ -1,5 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { ArrowRight, Check, Loader2 } from 'lucide-react';
+import { ArrowRight, Check, Loader2, Sparkles } from 'lucide-react';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -10,7 +10,6 @@ import {
 } from '@/data/contactOptions';
 import { cn } from '@/lib/utils';
 import { Reveal } from '../ui/reveal';
-import { SectionLabel } from '../ui/section-label';
 
 const contactSchema = z.object({
     name: z
@@ -106,56 +105,98 @@ export function Contact() {
     };
 
     return (
-        <section id="contact" className="relative overflow-hidden bg-white">
-            <div
-                aria-hidden
-                className="pointer-events-none absolute inset-0 -z-10"
-                style={{
-                    background:
-                        'radial-gradient(60% 50% at 80% 0%, color-mix(in srgb, var(--color-mint) 60%, transparent), transparent 70%), radial-gradient(50% 40% at 0% 90%, color-mix(in srgb, var(--color-mist) 60%, transparent), transparent 70%)',
-                }}
-            />
-            <div className="mx-auto max-w-[1200px] px-5 py-24 md:px-8 md:py-32">
-                <div className="grid grid-cols-12 gap-y-12 md:gap-x-12">
-                    <div className="col-span-12 md:sticky md:top-28 md:col-span-5 md:self-start">
-                        <SectionLabel number="08">Contact</SectionLabel>
-                        <Reveal>
-                            <h2 className="mt-4 font-display text-[34px] leading-[1.05] text-ink md:text-[48px]">
-                                Punya ide project?
+        <section
+            id="contact"
+            className="relative overflow-hidden bg-[var(--color-night)] pb-24 md:pb-32"
+        >
+            {/* Big CTA banner - Circular-style */}
+            <div className="mx-auto max-w-[1200px] px-5 md:px-8">
+                <Reveal>
+                    <div className="relative isolate mx-auto overflow-hidden rounded-3xl">
+                        <div
+                            aria-hidden
+                            className="hero-landscape pointer-events-none absolute inset-0"
+                        />
+                        <div
+                            aria-hidden
+                            className="noise-overlay pointer-events-none absolute inset-0 opacity-40 mix-blend-overlay"
+                        />
+                        <div className="relative flex min-h-[460px] flex-col items-center justify-center px-6 py-20 text-center md:px-12 md:py-28">
+                            <h2 className="mx-auto max-w-3xl font-display text-[36px] leading-[1.05] tracking-tight text-[var(--color-night)] md:text-[64px]">
+                                Mulai bangun produk
                                 <br />
-                                <span className="text-teal italic">
-                                    Kita rapikan jadi scope yang bisa
-                                    dikerjakan.
+                                <span className="italic">
+                                    digital yang luar biasa
                                 </span>
                             </h2>
+                            <p className="mx-auto mt-5 max-w-md text-[14px] leading-relaxed text-[var(--color-night)]/70 md:text-[15px]">
+                                Diskusikan ide Anda dengan tim kami. Respons
+                                biasanya kurang dari 24 jam kerja.
+                            </p>
+
+                            <a
+                                href="#contact-form"
+                                className="group mt-7 inline-flex items-center gap-1.5 rounded-full bg-[var(--color-night)] px-3 py-2 pr-1.5 text-[13px] font-medium text-white transition hover:bg-[var(--color-night-3)]"
+                            >
+                                <span className="px-2">
+                                    Daftar untuk konsultasi
+                                </span>
+                                <span className="inline-flex size-7 items-center justify-center rounded-full bg-[var(--color-lime)] text-[var(--color-night)] transition-transform group-hover:translate-x-0.5">
+                                    <ArrowRight className="size-3.5" />
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </Reveal>
+            </div>
+
+            {/* Form */}
+            <div
+                id="contact-form"
+                className="mx-auto mt-20 max-w-[1200px] px-5 md:mt-28 md:px-8"
+            >
+                <div className="grid grid-cols-12 gap-y-12 md:gap-x-12">
+                    <div className="col-span-12 md:col-span-5">
+                        <p className="text-[12px] tracking-[0.18em] text-[var(--color-lime)] uppercase">
+                            <Sparkles className="-mt-0.5 mr-1 inline size-3.5" />
+                            Kontak
+                        </p>
+                        <Reveal>
+                            <h3 className="mt-3 font-display text-[34px] leading-[1.05] text-white md:text-[48px]">
+                                Punya ide project?
+                                <br />
+                                <span className="text-white/65 italic">
+                                    Kita rapikan jadi scope
+                                </span>
+                            </h3>
                         </Reveal>
                         <Reveal delay={0.1}>
-                            <p className="mt-6 max-w-md text-[14px] leading-relaxed text-muted-ink">
+                            <p className="mt-6 max-w-md text-[14px] leading-relaxed text-white/60">
                                 Ceritakan kebutuhan awal, jenis project, budget,
                                 dan target waktu. Kami akan bantu susun langkah
                                 pertama yang masuk akal.
                             </p>
                         </Reveal>
 
-                        <ul className="mt-8 space-y-3 border-t border-line pt-6 text-[13.5px] text-muted-ink">
+                        <ul className="mt-8 space-y-3 border-t border-stroke pt-6 text-[13.5px] text-white/60">
                             <li className="flex items-start gap-2">
                                 <span
                                     aria-hidden
-                                    className="mt-2 size-1 shrink-0 rounded-full bg-gold"
+                                    className="mt-2 size-1 shrink-0 rounded-full bg-[var(--color-lime)]"
                                 />
                                 Respons biasanya kurang dari 24 jam kerja.
                             </li>
                             <li className="flex items-start gap-2">
                                 <span
                                     aria-hidden
-                                    className="mt-2 size-1 shrink-0 rounded-full bg-gold"
+                                    className="mt-2 size-1 shrink-0 rounded-full bg-[var(--color-lime)]"
                                 />
                                 Discovery awal 30–60 menit, gratis.
                             </li>
                             <li className="flex items-start gap-2">
                                 <span
                                     aria-hidden
-                                    className="mt-2 size-1 shrink-0 rounded-full bg-gold"
+                                    className="mt-2 size-1 shrink-0 rounded-full bg-[var(--color-lime)]"
                                 />
                                 Tidak harus sudah punya konten lengkap.
                             </li>
@@ -172,7 +213,7 @@ export function Contact() {
                                 <form
                                     noValidate
                                     onSubmit={handleSubmit(onSubmit)}
-                                    className="rounded-3xl border border-line bg-white p-6 shadow-[0_24px_60px_-40px_rgba(15,23,42,0.18)] md:p-10"
+                                    className="rounded-3xl border border-stroke bg-[var(--color-night-2)] p-6 md:p-10"
                                 >
                                     {/* Honeypot */}
                                     <div
@@ -311,14 +352,14 @@ export function Contact() {
                                     {serverError && (
                                         <p
                                             role="alert"
-                                            className="mt-5 rounded-md border border-[color-mix(in_srgb,var(--color-coral)_25%,transparent)] bg-[color-mix(in_srgb,var(--color-coral)_8%,white)] px-4 py-3 text-[13px] text-[#9a3a31]"
+                                            className="mt-5 rounded-md border border-[color-mix(in_srgb,var(--color-coral)_30%,transparent)] bg-[color-mix(in_srgb,var(--color-coral)_15%,transparent)] px-4 py-3 text-[13px] text-[#fda797]"
                                         >
                                             {serverError}
                                         </p>
                                     )}
 
-                                    <div className="mt-7 flex flex-col gap-4 border-t border-line pt-6 md:flex-row md:items-center md:justify-between">
-                                        <p className="text-[12.5px] text-muted-ink">
+                                    <div className="mt-7 flex flex-col gap-4 border-t border-stroke pt-6 md:flex-row md:items-center md:justify-between">
+                                        <p className="text-[12.5px] text-white/55">
                                             Dengan mengirim form, Anda setuju
                                             data dipakai hanya untuk
                                             mendiskusikan project.
@@ -326,23 +367,29 @@ export function Contact() {
                                         <button
                                             type="submit"
                                             disabled={isSubmitting}
-                                            className="group inline-flex items-center justify-center gap-2 rounded-full bg-[var(--color-teal)] px-6 py-3 text-[13px] font-medium text-white transition hover:bg-[var(--color-teal-soft)] focus-visible:ring-2 focus-visible:ring-[color-mix(in_srgb,var(--color-teal)_50%,transparent)] focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-70"
+                                            className="group inline-flex items-center justify-center gap-2 rounded-full bg-[var(--color-lime)] px-3 py-3 pr-1.5 text-[13px] font-medium text-[var(--color-night)] transition hover:bg-[var(--color-lime-soft)] focus-visible:ring-2 focus-visible:ring-[color-mix(in_srgb,var(--color-lime)_50%,transparent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-night)] focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-70"
                                         >
                                             {isSubmitting ? (
                                                 <>
                                                     <Loader2
                                                         aria-hidden
-                                                        className="size-4 animate-spin"
+                                                        className="ml-2 size-4 animate-spin"
                                                     />
-                                                    Mengirim…
+                                                    <span className="px-2">
+                                                        Mengirim…
+                                                    </span>
                                                 </>
                                             ) : (
                                                 <>
-                                                    Kirim detail project
-                                                    <ArrowRight
-                                                        aria-hidden
-                                                        className="size-4 transition-transform duration-300 group-hover:translate-x-0.5"
-                                                    />
+                                                    <span className="px-2">
+                                                        Kirim detail project
+                                                    </span>
+                                                    <span className="inline-flex size-7 items-center justify-center rounded-full bg-[var(--color-night)] text-white">
+                                                        <ArrowRight
+                                                            aria-hidden
+                                                            className="size-3.5 transition-transform duration-300 group-hover:translate-x-0.5"
+                                                        />
+                                                    </span>
                                                 </>
                                             )}
                                         </button>
@@ -372,17 +419,17 @@ function Field({
 }) {
     return (
         <label className={cn('flex flex-col gap-1.5', className)}>
-            <span className="flex items-center gap-1 text-[12px] tracking-[0.16em] text-muted-ink uppercase">
+            <span className="flex items-center gap-1 text-[12px] tracking-[0.16em] text-white/55 uppercase">
                 {label}
                 {required && (
-                    <span aria-hidden className="text-gold">
+                    <span aria-hidden className="text-[var(--color-lime)]">
                         *
                     </span>
                 )}
             </span>
             {children}
             {error && (
-                <span className="text-[12px] text-[#a3382e]">{error}</span>
+                <span className="text-[12px] text-[#fda797]">{error}</span>
             )}
         </label>
     );
@@ -390,42 +437,41 @@ function Field({
 
 const inputCls = (hasError: boolean) =>
     cn(
-        'w-full rounded-lg border bg-white px-3.5 py-3 text-[14px] text-ink transition placeholder:text-muted-ink/70 focus:ring-2 focus:ring-[color-mix(in_srgb,var(--color-teal)_28%,transparent)] focus:outline-none',
+        'w-full rounded-lg border bg-[var(--color-night-3)] px-3.5 py-3 text-[14px] text-white transition placeholder:text-white/35 focus:ring-2 focus:ring-[color-mix(in_srgb,var(--color-lime)_30%,transparent)] focus:outline-none',
         hasError
-            ? 'border-[color-mix(in_srgb,var(--color-coral)_55%,transparent)] focus:border-[var(--color-coral)]'
-            : 'border-line focus:border-[var(--color-teal)]',
+            ? 'border-[#9a3a31]/60 focus:border-[#9a3a31]'
+            : 'border-stroke-soft focus:border-[var(--color-lime)]/60',
     );
 
 const selectCls = (hasError: boolean) =>
-    cn(inputCls(hasError), 'appearance-none bg-no-repeat pr-10', 'bg-white');
+    cn(
+        'w-full appearance-none rounded-lg border bg-[var(--color-night-3)] bg-[length:14px_14px] bg-[right_14px_center] bg-no-repeat px-3.5 py-3 pr-10 text-[14px] text-white transition focus:ring-2 focus:ring-[color-mix(in_srgb,var(--color-lime)_30%,transparent)] focus:outline-none',
+        hasError
+            ? 'border-[#9a3a31]/60 focus:border-[#9a3a31]'
+            : 'border-stroke-soft focus:border-[var(--color-lime)]/60',
+    );
 
 function SuccessState({ onReset }: { onReset: () => void }) {
     return (
-        <div className="rounded-3xl border border-line bg-white p-8 md:p-12">
-            <div className="flex size-12 items-center justify-center rounded-full bg-mint text-teal">
-                <Check aria-hidden className="size-5 stroke-[2.5]" />
-            </div>
-            <h3 className="mt-6 font-display text-[28px] leading-[1.15] text-ink md:text-[36px]">
-                Terima kasih. Detail awal project sudah terkirim.
+        <div className="rounded-3xl border border-stroke bg-[var(--color-night-2)] p-8 md:p-12">
+            <span className="inline-flex size-12 items-center justify-center rounded-full bg-[var(--color-lime)] text-[var(--color-night)]">
+                <Check aria-hidden className="size-5" />
+            </span>
+            <h3 className="mt-5 font-display text-[24px] leading-tight text-white md:text-[28px]">
+                Terima kasih, pesan kamu sudah masuk.
             </h3>
-            <p className="mt-4 max-w-xl text-[14.5px] leading-relaxed text-muted-ink">
-                Kami akan meninjau scope-nya dulu sebelum memberi estimasi.
-                Biasanya respons keluar dalam 24 jam kerja. Jika perlu cepat,
-                bisa juga kontak via{' '}
-                <a
-                    href="mailto:hello@solvarastudio.com"
-                    className="text-ink underline-offset-2 hover:underline"
-                >
-                    hello@solvarastudio.com
-                </a>
-                .
+            <p className="mt-3 max-w-md text-[14px] leading-relaxed text-white/65">
+                Kami akan baca konteks project-nya dan respons via email atau
+                WhatsApp dalam 24 jam kerja. Sementara itu, kamu bisa siapkan
+                referensi atau aset yang relevan.
             </p>
             <button
                 type="button"
                 onClick={onReset}
-                className="mt-8 inline-flex items-center gap-2 rounded-full border border-line px-5 py-2.5 text-[13px] text-ink transition hover:border-[var(--color-teal)] hover:text-[var(--color-teal)]"
+                className="mt-6 inline-flex items-center gap-2 text-[13px] font-medium text-[var(--color-lime)] hover:text-[var(--color-lime-soft)]"
             >
-                Kirim project lain
+                Kirim pesan lain
+                <ArrowRight aria-hidden className="size-4" />
             </button>
         </div>
     );

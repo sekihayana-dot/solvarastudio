@@ -30,6 +30,19 @@
     --color-soft: #f8fafc;
     --color-line: #e5e7eb;
 
+    /* Solvara dark + lime palette (Circular-inspired) */
+    --color-night: #050505;
+    --color-night-2: #0a0a0a;
+    --color-night-3: #111111;
+    --color-night-4: #161616;
+    --color-stroke: #1f1f1f;
+    --color-stroke-soft: #2a2a2a;
+    --color-cream: #f5f5f0;
+    --color-lime: #c1f53c;
+    --color-lime-soft: #d2ff5c;
+    --color-lime-deep: #9ed620;
+    --color-olive: #1d2a08;
+
     --radius-lg: var(--radius);
     --radius-md: calc(var(--radius) - 2px);
     --radius-sm: calc(var(--radius) - 4px);
@@ -242,6 +255,102 @@
         box-shadow:
             0 0 0 3px color-mix(in srgb, var(--color-teal) 22%, transparent),
             0 0 0 1px var(--color-teal);
+    }
+
+    /* Solvara dark + lime utilities */
+    .bg-night {
+        background-color: var(--color-night);
+    }
+
+    .bg-night-2 {
+        background-color: var(--color-night-2);
+    }
+
+    .bg-night-3 {
+        background-color: var(--color-night-3);
+    }
+
+    .bg-night-4 {
+        background-color: var(--color-night-4);
+    }
+
+    .bg-lime-accent {
+        background-color: var(--color-lime);
+    }
+
+    .text-lime-accent {
+        color: var(--color-lime);
+    }
+
+    .text-cream {
+        color: var(--color-cream);
+    }
+
+    .border-stroke {
+        border-color: var(--color-stroke);
+    }
+
+    .border-stroke-soft {
+        border-color: var(--color-stroke-soft);
+    }
+
+    /* Hero landscape gradient backdrop (Circular-style) */
+    .hero-landscape {
+        background:
+            radial-gradient(
+                80% 60% at 50% 10%,
+                rgba(193, 245, 60, 0.12) 0%,
+                rgba(193, 245, 60, 0.04) 35%,
+                transparent 60%
+            ),
+            radial-gradient(
+                70% 50% at 30% 70%,
+                rgba(193, 245, 60, 0.18) 0%,
+                rgba(140, 200, 50, 0.06) 30%,
+                transparent 55%
+            ),
+            radial-gradient(
+                60% 50% at 80% 75%,
+                rgba(125, 180, 40, 0.16) 0%,
+                rgba(60, 90, 20, 0.06) 35%,
+                transparent 60%
+            ),
+            linear-gradient(
+                180deg,
+                #ffffff 0%,
+                #eef5e0 12%,
+                #c8dba0 28%,
+                #7ea34d 50%,
+                #2d3a18 78%,
+                #050505 100%
+            );
+    }
+
+    /* Soft dotted noise overlay used by hero/feature blocks */
+    .noise-overlay {
+        background-image: radial-gradient(
+            rgba(255, 255, 255, 0.04) 1px,
+            transparent 1px
+        );
+        background-size: 3px 3px;
+    }
+
+    /* Subtle dot grid for dark sections */
+    .dot-grid {
+        background-image: radial-gradient(
+            rgba(255, 255, 255, 0.05) 1px,
+            transparent 1px
+        );
+        background-size: 28px 28px;
+    }
+
+    /* Lime underline used for highlight phrases on dark */
+    .lime-underline {
+        background-image: linear-gradient(
+            transparent 65%,
+            color-mix(in srgb, var(--color-lime) 60%, transparent) 65%
+        );
+        padding: 0 0.08em;
     }
 }
 

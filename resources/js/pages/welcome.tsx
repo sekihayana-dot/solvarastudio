@@ -8,9 +8,7 @@ import { Process } from '@/components/landing/sections/process';
 import { SelectedWork } from '@/components/landing/sections/selected-work';
 import { Services } from '@/components/landing/sections/services';
 import { SocialProof } from '@/components/landing/sections/social-proof';
-import { TechQuality } from '@/components/landing/sections/tech-quality';
 import { Testimonials } from '@/components/landing/sections/testimonials';
-import { WhySolvara } from '@/components/landing/sections/why-solvara';
 import { faqs } from '@/data/faqs';
 import {
     faqSchemaFromList,
@@ -45,7 +43,7 @@ export default function Welcome() {
                 <meta name="twitter:description" content={META.description} />
                 <meta name="twitter:image" content={META.image} />
 
-                <meta name="theme-color" content="#FFFFFF" />
+                <meta name="theme-color" content="#050505" />
 
                 <script
                     type="application/ld+json"
@@ -70,22 +68,20 @@ export default function Welcome() {
             {/* Skip link for accessibility */}
             <a
                 href="#main"
-                className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:text-[13px] focus:text-ink focus:shadow-md focus:ring-2 focus:ring-[var(--color-teal)]"
+                className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:rounded-md focus:bg-[var(--color-lime)] focus:px-4 focus:py-2 focus:text-[13px] focus:text-[var(--color-night)] focus:shadow-md"
             >
                 Lewati ke konten utama
             </a>
 
-            <div className="min-h-screen bg-white text-ink antialiased">
+            <div className="min-h-screen bg-[var(--color-night)] text-white antialiased">
                 <Navbar />
                 <main id="main">
                     <Hero />
                     <SocialProof />
                     <Services />
+                    <Testimonials />
                     <Process />
                     <SelectedWork />
-                    <WhySolvara />
-                    <TechQuality />
-                    <Testimonials />
                     <FAQ />
                     <Contact />
                 </main>

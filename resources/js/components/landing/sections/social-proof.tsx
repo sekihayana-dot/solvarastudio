@@ -1,37 +1,30 @@
-import { metrics } from '@/data/socialProof';
 import { Reveal } from '../ui/reveal';
+
+const brands = [
+    'Capsule',
+    'Catalog',
+    'CloudWatch',
+    'Command+R',
+    'Acme Corp',
+    'Alt+Shift',
+];
 
 export function SocialProof() {
     return (
-        <section className="border-y border-line bg-white">
-            <div className="mx-auto max-w-[1200px] px-5 md:px-8">
+        <section className="relative bg-[var(--color-night)]">
+            <div className="mx-auto max-w-[1200px] px-5 pb-20 md:px-8 md:pb-28">
                 <Reveal>
-                    <p className="py-6 text-[13px] tracking-tight text-muted-ink md:text-[14px]">
-                        Dipercaya untuk{' '}
-                        <span className="text-ink">company profile</span>,{' '}
-                        <span className="text-ink">landing page</span>,{' '}
-                        <span className="text-ink">dashboard internal</span>,{' '}
-                        <span className="text-ink">katalog</span>, dan{' '}
-                        <span className="text-ink">sistem booking</span>.
-                    </p>
+                    <div className="grid grid-cols-2 items-center gap-8 sm:grid-cols-3 md:grid-cols-6 md:gap-10">
+                        {brands.map((brand) => (
+                            <div
+                                key={brand}
+                                className="flex items-center justify-center text-center font-display text-[18px] tracking-tight text-white/40 transition hover:text-white/70 md:text-[20px]"
+                            >
+                                {brand}
+                            </div>
+                        ))}
+                    </div>
                 </Reveal>
-
-                <div className="grid grid-cols-2 divide-x divide-y divide-line border-y border-line md:grid-cols-4 md:divide-y-0">
-                    {metrics.map((m, idx) => (
-                        <Reveal
-                            key={m.label}
-                            delay={idx * 0.06}
-                            className="px-5 py-6 md:px-7 md:py-8"
-                        >
-                            <div className="font-display text-[26px] leading-none text-ink md:text-[34px]">
-                                {m.value}
-                            </div>
-                            <div className="mt-2 text-[12px] tracking-[0.16em] text-muted-ink uppercase">
-                                {m.label}
-                            </div>
-                        </Reveal>
-                    ))}
-                </div>
             </div>
         </section>
     );
