@@ -1,58 +1,91 @@
-import { motion } from 'motion/react';
-import { processSteps } from '@/data/process';
-import { Reveal, Stagger, itemVariants } from '../ui/reveal';
-import { SectionLabel } from '../ui/section-label';
+import { CalendarCheck, Rocket, Users } from 'lucide-react';
+import { CTALink } from '../ui/cta-button';
+import { Reveal } from '../ui/reveal';
+
+const steps = [
+    {
+        icon: CalendarCheck,
+        title: 'Kickoff terjadwal',
+        description:
+            'Selaraskan scope, struktur, dan timeline. Cocok untuk setup ringkas maupun migrasi penuh, kami yang ambil alih prosesnya.',
+    },
+    {
+        icon: Users,
+        title: 'Kolaborasi real-time',
+        description:
+            'Bekerja bersama tim Solvara dengan visibilitas penuh. Setiap langkah mengikuti best practice dan QA menyeluruh untuk menjaga kualitas.',
+    },
+    {
+        icon: Rocket,
+        title: 'Launch & scale',
+        description:
+            'Rilis dengan percaya diri. Sistem kami terus belajar dan berkembang agar tim Anda bisa tumbuh tanpa hambatan teknis.',
+    },
+];
 
 export function Process() {
     return (
-        <section id="process" className="bg-soft">
-            <div className="mx-auto max-w-[1200px] px-5 py-24 md:px-8 md:py-32">
-                <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
-                    <div>
-                        <SectionLabel number="02">Process</SectionLabel>
+        <section
+            id="process"
+            className="relative bg-[var(--color-night)] pt-24 pb-24 md:pt-32 md:pb-32"
+        >
+            <div className="mx-auto max-w-[1200px] px-5 md:px-8">
+                <div className="grid grid-cols-1 gap-16 md:grid-cols-12 md:gap-12">
+                    <div className="md:col-span-5">
                         <Reveal>
-                            <h2 className="mt-4 max-w-3xl font-display text-[34px] leading-[1.1] text-ink md:text-[46px]">
-                                Enam langkah, dari{' '}
-                                <span className="italic">discovery</span> sampai
-                                handover.
+                            <h2 className="font-display text-[40px] leading-[1.05] tracking-tight text-white md:text-[64px]">
+                                Cara kerja
+                                <br /> kami
                             </h2>
                         </Reveal>
+                        <Reveal delay={0.05}>
+                            <p className="mt-6 max-w-md text-[14px] leading-relaxed text-white/65 md:text-[15px]">
+                                Platform Anda dikonfigurasi oleh ahlinya dan
+                                diluncurkan di paket{' '}
+                                <span className="font-medium text-white">
+                                    Enterprise plan
+                                </span>
+                                , siap tumbuh bersama tim.
+                            </p>
+                        </Reveal>
+                        <Reveal delay={0.1}>
+                            <div className="mt-8">
+                                <CTALink href="#contact" variant="light">
+                                    Jadwalkan kickoff
+                                </CTALink>
+                            </div>
+                        </Reveal>
                     </div>
-                    <Reveal delay={0.1}>
-                        <p className="max-w-xs text-[14px] leading-relaxed text-muted-ink">
-                            Setiap langkah punya output yang bisa dicek. Tidak
-                            perlu menunggu sampai akhir untuk tahu progress.
-                        </p>
-                    </Reveal>
-                </div>
 
-                <Stagger className="mt-12">
-                    <ol className="grid grid-cols-1 border-t border-line md:grid-cols-3">
-                        {processSteps.map((step, idx) => (
-                            <motion.li
-                                key={step.number}
-                                variants={itemVariants}
-                                className={[
-                                    'relative border-b border-line p-6 md:p-8',
-                                    idx % 3 !== 0 ? 'md:border-l' : '',
-                                ].join(' ')}
-                            >
-                                <div className="flex items-center gap-3">
-                                    <span className="font-mono text-[12px] font-medium tracking-wider text-gold">
-                                        {step.number}
+                    <div className="md:col-span-7">
+                        <ol className="relative">
+                            <span
+                                aria-hidden
+                                className="absolute top-3 bottom-3 left-[18px] w-px bg-[var(--color-lime)]/40 md:left-[22px]"
+                            />
+                            {steps.map((step, idx) => (
+                                <Reveal
+                                    key={step.title}
+                                    delay={idx * 0.08}
+                                    className="relative pb-14 pl-12 last:pb-0 md:pl-16"
+                                >
+                                    <span
+                                        aria-hidden
+                                        className="absolute top-0 left-0 inline-flex size-9 items-center justify-center rounded-full bg-[var(--color-lime)] text-[var(--color-night)] md:size-11"
+                                    >
+                                        <step.icon className="size-4 md:size-5" />
                                     </span>
-                                    <span className="block h-px flex-1 bg-line" />
-                                </div>
-                                <h3 className="mt-5 font-display text-[24px] text-ink md:text-[28px]">
-                                    {step.title}
-                                </h3>
-                                <p className="mt-3 text-[14px] leading-relaxed text-muted-ink">
-                                    {step.description}
-                                </p>
-                            </motion.li>
-                        ))}
-                    </ol>
-                </Stagger>
+                                    <h3 className="font-display text-[22px] leading-tight text-white md:text-[26px]">
+                                        {step.title}
+                                    </h3>
+                                    <p className="mt-2 max-w-md text-[13px] leading-relaxed text-white/60 md:text-[14px]">
+                                        {step.description}
+                                    </p>
+                                </Reveal>
+                            ))}
+                        </ol>
+                    </div>
+                </div>
             </div>
         </section>
     );
