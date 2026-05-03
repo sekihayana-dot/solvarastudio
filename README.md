@@ -58,14 +58,6 @@ URL Docker:
 - MySQL host port: `3307`
 - Redis host port: `6380`
 
-Default admin dari seeder:
-
-| Field | Value |
-| --- | --- |
-| Email | `admin@solvarastudio.com` |
-| Password | `password` |
-
-Ganti kredensial admin sebelum production.
 
 ## Frontend
 
